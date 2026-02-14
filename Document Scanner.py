@@ -75,8 +75,8 @@ while True:
     # Gaussian blur to reduce noise before edge detection
     blurred_frame = cv2.GaussianBlur(grey_frame, (5, 5), 0)
 
-    edges = cv2.Canny(grey_frame, 130, 50) # edge detection
-    edges_blurred = cv2.Canny(blurred_frame, 130, 50) # edge detection on blurred image to reduce noise
+    edges = cv2.Canny(grey_frame, 75, 200) # edge detection
+    edges_blurred = cv2.Canny(blurred_frame, 75, 200) # edge detection on blurred image to reduce noise
     dilated_image = cv2.dilate(edges_blurred, kernal, iterations=1)
     eroded_image = cv2.erode(dilated_image, kernal, iterations=1) # the final result that we will use for contour detection and document scanning
 
@@ -109,3 +109,4 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
